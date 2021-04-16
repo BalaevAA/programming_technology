@@ -1,0 +1,10 @@
+^D:\COURSEWORK\BUILD\CMAKEFILES\CD8302A7EFED80138CAA7A4163B43ECA\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/coursework/invest_trader -BD:/coursework/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/coursework/build/balaev_a_a.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

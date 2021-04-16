@@ -1,0 +1,4 @@
+D:/coursework/build/CMakeFiles/coursework.dir
+D:/coursework/build/CMakeFiles/INSTALL.dir
+D:/coursework/build/CMakeFiles/ALL_BUILD.dir
+D:/coursework/build/CMakeFiles/ZERO_CHECK.dir

@@ -1,0 +1,65 @@
+\hypertarget{class_bought_collection}{}\doxysection{Класс Bought\+Collection}
+\label{class_bought_collection}\index{BoughtCollection@{BoughtCollection}}
+
+
+Класс описывает коллекцию купленных бумаг  
+
+
+
+
+{\ttfamily \#include $<$Bought\+Collection.\+h$>$}
+
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_bought_collection_a0a08761a895b2742eee57b98e4ebd52f}\label{class_bought_collection_a0a08761a895b2742eee57b98e4ebd52f}} 
+\mbox{\hyperlink{class_bought_collection_a0a08761a895b2742eee57b98e4ebd52f}{Bought\+Collection}} (\mbox{\hyperlink{class_paper_collection}{Paper\+Collection}} $\ast$papers, \mbox{\hyperlink{class_user}{User}} $\ast$user)
+\begin{DoxyCompactList}\small\item\em Конструктор принимающий массив бумаг, которые существуют и информацию о пользователе \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_bought_collection_a3c26bde1b92ebc2de6498a1bfcc2ebab}\label{class_bought_collection_a3c26bde1b92ebc2de6498a1bfcc2ebab}} 
+int \mbox{\hyperlink{class_bought_collection_a3c26bde1b92ebc2de6498a1bfcc2ebab}{get\+Count}} () const
+\begin{DoxyCompactList}\small\item\em Метод возвращающий количество купленных бумаг \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_bought_collection_ae15bc2378863b9632f8bcfbf9de02161}\label{class_bought_collection_ae15bc2378863b9632f8bcfbf9de02161}} 
+\mbox{\hyperlink{class_investment}{Investment}} \mbox{\hyperlink{class_bought_collection_ae15bc2378863b9632f8bcfbf9de02161}{get\+Investment}} (int index) const
+\begin{DoxyCompactList}\small\item\em Метод возвращающий экземпляр класса \mbox{\hyperlink{class_investment}{Investment}} по индексу \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_bought_collection_aa9df449551dcfbc4cd6896746ff25953}\label{class_bought_collection_aa9df449551dcfbc4cd6896746ff25953}} 
+\mbox{\hyperlink{class_investment}{Investment}} \mbox{\hyperlink{class_bought_collection_aa9df449551dcfbc4cd6896746ff25953}{get\+Investment}} (QString name) const
+\begin{DoxyCompactList}\small\item\em Метод возвращающий экземпляр класса \mbox{\hyperlink{class_investment}{Investment}} по имени \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_bought_collection_a791745ec59bed1cfea564a857fd30b7b}\label{class_bought_collection_a791745ec59bed1cfea564a857fd30b7b}} 
+int \mbox{\hyperlink{class_bought_collection_a791745ec59bed1cfea564a857fd30b7b}{get\+Number\+Invesments}} (QString name) const
+\begin{DoxyCompactList}\small\item\em Метод возвращающий количество купленных бумаг по ее имени \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_bought_collection_a6d6dcea348b7337a163cf8a2105fb465}\label{class_bought_collection_a6d6dcea348b7337a163cf8a2105fb465}} 
+void \mbox{\hyperlink{class_bought_collection_a6d6dcea348b7337a163cf8a2105fb465}{delete\+Investment}} (int n)
+\begin{DoxyCompactList}\small\item\em Метод удаляющий инвестиции при их продаже по индексу \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_bought_collection_aff715bb300ba7a1928c3ca7ad038b045}\label{class_bought_collection_aff715bb300ba7a1928c3ca7ad038b045}} 
+void \mbox{\hyperlink{class_bought_collection_aff715bb300ba7a1928c3ca7ad038b045}{delete\+Investment}} (QString name)
+\begin{DoxyCompactList}\small\item\em Метод удаляющий инвестиции при их продаже по индексу \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_bought_collection_a5a430896aafde586651d1a4cfd402240}\label{class_bought_collection_a5a430896aafde586651d1a4cfd402240}} 
+void \mbox{\hyperlink{class_bought_collection_a5a430896aafde586651d1a4cfd402240}{set\+Investments}} (QVector$<$ QString\+List $>$ data)
+\begin{DoxyCompactList}\small\item\em Метод заносящий информацию об инвестициях полученную из файла \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_bought_collection_a79f1464c85fadcb2ea2913086943dd28}\label{class_bought_collection_a79f1464c85fadcb2ea2913086943dd28}} 
+void \mbox{\hyperlink{class_bought_collection_a79f1464c85fadcb2ea2913086943dd28}{set\+Investment\+By\+Name}} (double price, double sum, int number, QString name)
+\begin{DoxyCompactList}\small\item\em Метод обновл¤ющий данные существующих инвестиций \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_bought_collection_a2e452a385c62da7969f33d5902d7a56c}\label{class_bought_collection_a2e452a385c62da7969f33d5902d7a56c}} 
+void \mbox{\hyperlink{class_bought_collection_a2e452a385c62da7969f33d5902d7a56c}{set\+Count\+Investment}} (int num)
+\begin{DoxyCompactList}\small\item\em Метод устанавливающий количество ценных бумаг \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_bought_collection_a1e0d255fc421c6125a87ce33fb8bf992}\label{class_bought_collection_a1e0d255fc421c6125a87ce33fb8bf992}} 
+void \mbox{\hyperlink{class_bought_collection_a1e0d255fc421c6125a87ce33fb8bf992}{add\+Investment}} (const \mbox{\hyperlink{class_investment}{Investment}} \&invest)
+\begin{DoxyCompactList}\small\item\em Метод добавляющий инвестиции \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_bought_collection_a6a7e89b7d863e11d203eb7eef1092c71}\label{class_bought_collection_a6a7e89b7d863e11d203eb7eef1092c71}} 
+void \mbox{\hyperlink{class_bought_collection_a6a7e89b7d863e11d203eb7eef1092c71}{sell\+Investment}} (QString name, int number)
+\begin{DoxyCompactList}\small\item\em Метод осуществляющий продажу инвестиции \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_bought_collection_acf0249cf5803a675c1944d43037e9ead}\label{class_bought_collection_acf0249cf5803a675c1944d43037e9ead}} 
+void \mbox{\hyperlink{class_bought_collection_acf0249cf5803a675c1944d43037e9ead}{profit}} ()
+\begin{DoxyCompactList}\small\item\em Метод подсчитывающий выгоду с совершенной сделки \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_bought_collection_acecad693afb8b6bc909a144cf7a28882}\label{class_bought_collection_acecad693afb8b6bc909a144cf7a28882}} 
+bool \mbox{\hyperlink{class_bought_collection_acecad693afb8b6bc909a144cf7a28882}{check\+Have\+Investment\+By\+Name}} (QString name)
+\begin{DoxyCompactList}\small\item\em Метод проверяющий наличие инвестиции по ее имени \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс описывает коллекцию купленных бумаг 
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/coursework/invest\+\_\+trader/Bought\+Collection.\+h\item 
+D\+:/coursework/invest\+\_\+trader/Bought\+Collection.\+cpp\end{DoxyCompactItemize}

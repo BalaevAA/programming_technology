@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Курсовая работа: Исходный файл D:/coursework/invest_trader/User.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Курсовая работа
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_275089585c7fc1b5fd5d7d42c69cb1da.html">D:</a></li><li class="navelem"><a class="el" href="dir_3edd2b508f4285f93a736444328e2f02.html">coursework</a></li><li class="navelem"><a class="el" href="dir_b65de0c790aeb8c83c477c052d5beff4.html">invest_trader</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">User.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;QString&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="class_user.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_user.html">User</a></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  <span class="keywordtype">double</span> profitNow;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <span class="keywordtype">double</span> moneyBox;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  QString firstName;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  QString lastName;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <span class="keywordtype">int</span> numberPapers;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <a class="code" href="class_user.html#a9b54902d945209b9843ce4c17e228e78">User</a>(QString firstName = <span class="stringliteral">&quot;Name&quot;</span>, QString lastName = <span class="stringliteral">&quot;lastName&quot;</span>, <span class="keywordtype">double</span> profit = 0, <span class="keywordtype">double</span> moneyBox = 0, <span class="keywordtype">int</span> numberPapers = 0);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    ~<a class="code" href="class_user.html">User</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="class_user.html#a5e1a666e1a88d983a0255ceb62357a16">getProfitNow</a>();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="class_user.html#a84bd2b2713d8c8ba08ab38ecbc85f17c">getMoneyBox</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  QString <a class="code" href="class_user.html#a021fbb99ac4ad7405f91e20c2df57119">getFirstName</a>();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  QString <a class="code" href="class_user.html#a780953bfd05d82e953bda9482b50a27e">getLastName</a>();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="class_user.html#a1a8c7ac43a8f36bc05daf01f3d85f769">getNumberPapers</a>();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_user.html#a8e7be63f9e8d15670fcf35811accabbd">setProfitNow</a>(<span class="keywordtype">double</span> profit);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_user.html#a6f636d49f8716e83990fc67a24a6efe2">addToMoneyBox</a>(<span class="keywordtype">double</span> sum);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_user.html#a09c5120b7f39d8a59e541f599e6f7ce7">setFirstName</a>(QString firstName);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_user.html#add9b849f8817b89c2858329e8ac88a30">setMoneyBox</a>(<span class="keywordtype">double</span> moneyBox);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_user.html#a6e4d7a83c7720c2334af616d8e315c90">setLastName</a>(QString lastName);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_user.html#afc7d196b60c866679ea053af070f4afc">setNumberPapers</a>(<span class="keywordtype">int</span> numberPapers);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;};</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="ttc" id="aclass_user_html"><div class="ttname"><a href="class_user.html">User</a></div><div class="ttdoc">Класс содержащий данные о пользователе</div><div class="ttdef"><b>Definition:</b> User.h:7</div></div>
+<div class="ttc" id="aclass_user_html_a021fbb99ac4ad7405f91e20c2df57119"><div class="ttname"><a href="class_user.html#a021fbb99ac4ad7405f91e20c2df57119">User::getFirstName</a></div><div class="ttdeci">QString getFirstName()</div><div class="ttdoc">Метод, возращающий имя пользователя</div><div class="ttdef"><b>Definition:</b> User.cpp:27</div></div>
+<div class="ttc" id="aclass_user_html_a09c5120b7f39d8a59e541f599e6f7ce7"><div class="ttname"><a href="class_user.html#a09c5120b7f39d8a59e541f599e6f7ce7">User::setFirstName</a></div><div class="ttdeci">void setFirstName(QString firstName)</div><div class="ttdoc">Метод, устанавливающий имя пользователя</div><div class="ttdef"><b>Definition:</b> User.cpp:56</div></div>
+<div class="ttc" id="aclass_user_html_a1a8c7ac43a8f36bc05daf01f3d85f769"><div class="ttname"><a href="class_user.html#a1a8c7ac43a8f36bc05daf01f3d85f769">User::getNumberPapers</a></div><div class="ttdeci">int getNumberPapers()</div><div class="ttdoc">Метод, возращающий кол-во купленных бумаг</div><div class="ttdef"><b>Definition:</b> User.cpp:36</div></div>
+<div class="ttc" id="aclass_user_html_a5e1a666e1a88d983a0255ceb62357a16"><div class="ttname"><a href="class_user.html#a5e1a666e1a88d983a0255ceb62357a16">User::getProfitNow</a></div><div class="ttdeci">double getProfitNow()</div><div class="ttdoc">Метод, возращающий выгоду с купленных бумаг</div><div class="ttdef"><b>Definition:</b> User.cpp:17</div></div>
+<div class="ttc" id="aclass_user_html_a6e4d7a83c7720c2334af616d8e315c90"><div class="ttname"><a href="class_user.html#a6e4d7a83c7720c2334af616d8e315c90">User::setLastName</a></div><div class="ttdeci">void setLastName(QString lastName)</div><div class="ttdoc">Метод, устанавливающий фамилию пользователя</div><div class="ttdef"><b>Definition:</b> User.cpp:61</div></div>
+<div class="ttc" id="aclass_user_html_a6f636d49f8716e83990fc67a24a6efe2"><div class="ttname"><a href="class_user.html#a6f636d49f8716e83990fc67a24a6efe2">User::addToMoneyBox</a></div><div class="ttdeci">void addToMoneyBox(double sum)</div><div class="ttdoc">Метод, добавляющий новую сумму в копилку продаж</div><div class="ttdef"><b>Definition:</b> User.cpp:46</div></div>
+<div class="ttc" id="aclass_user_html_a780953bfd05d82e953bda9482b50a27e"><div class="ttname"><a href="class_user.html#a780953bfd05d82e953bda9482b50a27e">User::getLastName</a></div><div class="ttdeci">QString getLastName()</div><div class="ttdoc">Метод, возращающий фамилию пользователя</div><div class="ttdef"><b>Definition:</b> User.cpp:32</div></div>
+<div class="ttc" id="aclass_user_html_a84bd2b2713d8c8ba08ab38ecbc85f17c"><div class="ttname"><a href="class_user.html#a84bd2b2713d8c8ba08ab38ecbc85f17c">User::getMoneyBox</a></div><div class="ttdeci">double getMoneyBox()</div><div class="ttdoc">Метод, возращающий сумму в копилке продаж</div><div class="ttdef"><b>Definition:</b> User.cpp:22</div></div>
+<div class="ttc" id="aclass_user_html_a8e7be63f9e8d15670fcf35811accabbd"><div class="ttname"><a href="class_user.html#a8e7be63f9e8d15670fcf35811accabbd">User::setProfitNow</a></div><div class="ttdeci">void setProfitNow(double profit)</div><div class="ttdoc">Метод, устанавливающий кол-во бумаг</div><div class="ttdef"><b>Definition:</b> User.cpp:41</div></div>
+<div class="ttc" id="aclass_user_html_a9b54902d945209b9843ce4c17e228e78"><div class="ttname"><a href="class_user.html#a9b54902d945209b9843ce4c17e228e78">User::User</a></div><div class="ttdeci">User(QString firstName=&quot;Name&quot;, QString lastName=&quot;lastName&quot;, double profit=0, double moneyBox=0, int numberPapers=0)</div><div class="ttdoc">&amp;#160;Конструктор пользователя, приимающий его имя, фамилию, выгоду с купленных бумаг, копилку продаж и ко...</div><div class="ttdef"><b>Definition:</b> User.cpp:4</div></div>
+<div class="ttc" id="aclass_user_html_add9b849f8817b89c2858329e8ac88a30"><div class="ttname"><a href="class_user.html#add9b849f8817b89c2858329e8ac88a30">User::setMoneyBox</a></div><div class="ttdeci">void setMoneyBox(double moneyBox)</div><div class="ttdoc">Метод, устанавливающий сумму копилки продаж пользователя</div><div class="ttdef"><b>Definition:</b> User.cpp:51</div></div>
+<div class="ttc" id="aclass_user_html_afc7d196b60c866679ea053af070f4afc"><div class="ttname"><a href="class_user.html#afc7d196b60c866679ea053af070f4afc">User::setNumberPapers</a></div><div class="ttdeci">void setNumberPapers(int numberPapers)</div><div class="ttdoc">Метод, устанавливающий кол-во бумаг пользователя</div><div class="ttdef"><b>Definition:</b> User.cpp:65</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

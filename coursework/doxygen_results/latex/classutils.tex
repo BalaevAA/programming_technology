@@ -1,0 +1,65 @@
+\hypertarget{classutils}{}\doxysection{Класс utils}
+\label{classutils}\index{utils@{utils}}
+
+
+Класс содержащий методы для упрощения работы  
+
+
+
+
+{\ttfamily \#include $<$utils.\+h$>$}
+
+\doxysubsection*{Открытые статические члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classutils_a8c3cc32d7a8f9f29d01af6d3a85f506c}\label{classutils_a8c3cc32d7a8f9f29d01af6d3a85f506c}} 
+static std\+::string \mbox{\hyperlink{classutils_a8c3cc32d7a8f9f29d01af6d3a85f506c}{q\+String\+Std\+String}} (QString string)
+\begin{DoxyCompactList}\small\item\em Метод, переводящий строку формата QString в формат Std\+String. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classutils_ac75f0caab5956590d41ff6cc189910e5}\label{classutils_ac75f0caab5956590d41ff6cc189910e5}} 
+static QString \mbox{\hyperlink{classutils_ac75f0caab5956590d41ff6cc189910e5}{Std\+Stringto\+QString}} (std\+::string string)
+\begin{DoxyCompactList}\small\item\em Метод, переводящий строку формата Std\+String в формат QString. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classutils_aab61f1e367d4049dfbcbe8fde3383f6d}\label{classutils_aab61f1e367d4049dfbcbe8fde3383f6d}} 
+static void \mbox{\hyperlink{classutils_aab61f1e367d4049dfbcbe8fde3383f6d}{Str\+To\+Massive}} (const std\+::string s, std\+::vector$<$ double $>$ $\ast$massive)
+\begin{DoxyCompactList}\small\item\em Метод, преобразующий строку полученную из файла в вектор \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classutils_a11f4e260fdb8aebaa61566ba92b90aa6}\label{classutils_a11f4e260fdb8aebaa61566ba92b90aa6}} 
+static std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classutils_a11f4e260fdb8aebaa61566ba92b90aa6}{parse\+Str}} (std\+::ifstream \&file)
+\begin{DoxyCompactList}\small\item\em Метод, парсящий строки из файла пользователя и сохраняющий их в ветор строк \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classutils_a6d44f85bc0fa07aa42569ed2697fe477}\label{classutils_a6d44f85bc0fa07aa42569ed2697fe477}} 
+static std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{classutils_a6d44f85bc0fa07aa42569ed2697fe477}{parse\+Data}} (std\+::ifstream \&file)
+\begin{DoxyCompactList}\small\item\em Метод, парсящий строки из файла с данными о измененях цен бумаг и сохраняющий из вектор строк \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classutils_a279943ea19e1fc460158f917ca8420be}\label{classutils_a279943ea19e1fc460158f917ca8420be}} 
+static void \mbox{\hyperlink{classutils_a279943ea19e1fc460158f917ca8420be}{create\+User\+File}} ()
+\begin{DoxyCompactList}\small\item\em Метод, создающий файл пользователя, если он еще не создан \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classutils_a9757b6154dbee7910bfa17cd4f412317}\label{classutils_a9757b6154dbee7910bfa17cd4f412317}} 
+static std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classutils_a9757b6154dbee7910bfa17cd4f412317}{get\+Data\+From\+User\+File}} ()
+\begin{DoxyCompactList}\small\item\em Метод, возвращающий данные о пользователе, которые он прочитал из файла, с помощью метода Parse\+Str. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classutils_afb277d3c453a348cf57e7649972eb231}\label{classutils_afb277d3c453a348cf57e7649972eb231}} 
+static int \mbox{\hyperlink{classutils_afb277d3c453a348cf57e7649972eb231}{what\+Time\+Index}} ()
+\begin{DoxyCompactList}\small\item\em Метод, возращающий минуту с начала открытия биржи, которая соответсвует индесу в массиве с ценнами на бумаги в эту минуту \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classutils_a1c31c889f9c42b4aa61dbab2c3946d9c}\label{classutils_a1c31c889f9c42b4aa61dbab2c3946d9c}} 
+static void \mbox{\hyperlink{classutils_a1c31c889f9c42b4aa61dbab2c3946d9c}{new\+Price}} ()
+\begin{DoxyCompactList}\small\item\em Метод, генерирующий цены на бумаги \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classutils_ac1fc7cf262bf6a6dbf2538bf43d48118}\label{classutils_ac1fc7cf262bf6a6dbf2538bf43d48118}} 
+static void \mbox{\hyperlink{classutils_ac1fc7cf262bf6a6dbf2538bf43d48118}{add\+User\+Data\+To\+File}} (QString name, QString last\+Name, double profit, double money\+Box, int number\+Papers)
+\begin{DoxyCompactList}\small\item\em Метод, обновляющий информацию о пользователя в файле \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classutils_ab5548ca7e6f08ffc6204e5ce7b6ee5af}\label{classutils_ab5548ca7e6f08ffc6204e5ce7b6ee5af}} 
+static void \mbox{\hyperlink{classutils_ab5548ca7e6f08ffc6204e5ce7b6ee5af}{create\+Investment\+File}} ()
+\begin{DoxyCompactList}\small\item\em Метод, создающий файл инвестиций, если он еще не создан \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classutils_a5882c96354bc6d7e160e787b0907272c}\label{classutils_a5882c96354bc6d7e160e787b0907272c}} 
+static void \mbox{\hyperlink{classutils_a5882c96354bc6d7e160e787b0907272c}{add\+Investment\+File}} (\mbox{\hyperlink{class_bought_collection}{Bought\+Collection}} $\ast$investments)
+\begin{DoxyCompactList}\small\item\em Метод, добавляющий в файл новую инвестицию \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classutils_affe234735a9010800b4bb7e846b63bc3}\label{classutils_affe234735a9010800b4bb7e846b63bc3}} 
+static QVector$<$ QString\+List $>$ \mbox{\hyperlink{classutils_affe234735a9010800b4bb7e846b63bc3}{get\+Investments\+From\+File}} ()
+\begin{DoxyCompactList}\small\item\em Метод, возвращающий вектор, хранящий информацию о инвестициях \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classutils_aa7eef9482a23f598b652a924db983348}\label{classutils_aa7eef9482a23f598b652a924db983348}} 
+static bool \mbox{\hyperlink{classutils_aa7eef9482a23f598b652a924db983348}{is\+Empty}} (std\+::ifstream \&p\+File)
+\begin{DoxyCompactList}\small\item\em Метод, проверяющий пустой ли файл \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс содержащий методы для упрощения работы 
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/coursework/invest\+\_\+trader/utils.\+h\item 
+D\+:/coursework/invest\+\_\+trader/utils.\+cpp\end{DoxyCompactItemize}
