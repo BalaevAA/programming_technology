@@ -1,9 +1,0 @@
-D:/coursework/checkResult/bin/coursework.exe
-D:/coursework/checkResult/bin/Qt5Cored.dll
-D:/coursework/checkResult/bin/Qt5Guid.dll
-D:/coursework/checkResult/bin/Qt5Widgetsd.dll
-D:/coursework/checkResult/bin/Qt5Sqld.dll
-D:/coursework/checkResult/bin/Qt5PrintSupportd.dll
-D:/coursework/checkResult/bin/sqldrivers/qsqlited.dll
-D:/coursework/checkResult/bin/platforms/qwindowsd.dll
-D:/coursework/checkResult/bin/platforms/qdirect2dd.dll
