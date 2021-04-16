@@ -1,2 +1,2 @@
-# programming_technology
-## All work for 3 semester 
+# Технологии программирования
+## Все работы за 3 семестр
