@@ -1,112 +1,102 @@
 #include<iostream>
 
-class List {
-public:
-  List() = default;
-  List(const List& l);
-  List operator=(const List& l);
-  float& operator[](const int index);
-  ~List();
-  int get_size();
-  void push_back(const float value);
-  void push_front(const float value);
-  void pop_front();
-  void clear();
-  bool is_empty();
-private:
-  struct Node {
-    float value = 0.0f;
-    Node *pNext = nullptr;
-  };
-private:
-  Node* head_ = nullptr;
-  int size = 0;
+struct Node {
+    int data = 0;
+    Node* pNext = nullptr;
 };
 
-List::~List(){
-  clear();
-}
-
-int List::get_size(){
-  return size;
-}
-
-void List::push_back(const float value){
-  if(head_ == nullptr){
-      head_ = new Node{value, nullptr};
-  } else {
-      Node* current = this->head_;
-      while(current->pNext != nullptr){
-        current = current->pNext;
-      }
-      current->pNext = new Node{value, nullptr};
-  }
-  size++;
-}
-
-void List::push_front(const float value){
-  head_ = new Node{value, head_};
-  size++;
-}
+class List {
+public:
+    List() = default;
+    List(const List& li);
+    List operator=(const List& rhs);
+    ~List();
+    int get_size();
+    void pushBack(int val);
+    void print();
+    bool isEmpty() const noexcept;
+private:
+    Node* head = nullptr;
+    int size;
+};
 
 
-void List::pop_front(){
-  Node* temp = new Node;
-  temp = head_->pNext;
-  delete head_;
-  head_ = temp;
-  size--;
-}
 
-void List::clear(){
-  while(!this->is_empty()){
-    this->pop_front();
-  }
-}
-
-bool List::is_empty(){
-  return head_ == nullptr;
-}
-
-float& List::operator[](const int index) {
-	Node* current = this->head_;
-	int k = 0;
-	while (current != nullptr) {
-		if (k == index) {
-			return current->value;
-		}
-		current = current->pNext;
-		k++;
-	}
+List::List(const List& li) {
+    if(li.isEmpty()) {
+        head = nullptr;
+        return;
+    }
+    Node* cur = li.head;
+    while(cur != nullptr) {
+        this->pushBack(cur->data);
+        cur = cur->pNext;
+    }
 }
 
 
-int main(){
-  List li;
-  li.push_back(12);
-  li.push_back(11);
+List List::operator=(const List& rhs) {
+    if(rhs.isEmpty()){
+        head == nullptr;
+        return *this;
+    }
+    Node* cur = rhs.head;
+    while(cur != nullptr) {
+        this->pushBack(cur->data);
+        cur = cur->pNext;
+    }
+    return *this;
+}
 
-  for (int i = 0; i < li.get_size(); ++i) {
-    std::cout << li[i] << " ";
-  }
-  std::cout << "\n";
-  li.pop_front();
 
-  for (int i = 0; i < li.get_size(); ++i) {
-    std::cout << li[i] << " ";
-  }
-  
-  li.push_back(42);
-  li.push_back(84);
-  std::cout << "\n";
-  for (int i = 0; i < li.get_size(); ++i) {
-    std::cout << li[i] << " ";
-  }
-  
-  li.push_front(10000);
-  std::cout << "\n";
-  for (int i = 0; i < li.get_size(); ++i) {
-    std::cout << li[i] << " ";
-  }
-  return 0;
+List::~List() {
+    while(head != nullptr) {
+        Node* temp = head->pNext;
+        delete head;
+        head = temp;
+    }
+}
+
+void List::pushBack(int val) {
+    if(head == nullptr) {
+        head = new Node{val, nullptr};
+    } else {
+        Node* cur = head;
+        while(cur->pNext != nullptr) {
+            cur = cur->pNext;
+        }
+        cur->pNext = new Node{val, nullptr};
+    }
+    size++;
+}
+
+bool List::isEmpty() const noexcept {
+    return head == nullptr;
+}
+
+void List::print() {
+    Node* cur = head;
+    while(cur != nullptr) {
+        std::cout << cur->data << " ";
+        cur = cur->pNext;
+    }
+}
+
+
+
+
+int main() {
+    List l1;
+    l1.pushBack(1);
+    l1.pushBack(2);
+    List l2(l1);
+    l2.pushBack(3);
+    l1.print();
+    std::cout << "\n";
+    l2.print();
+    List l3 = l1;
+    std::cout << "\n";
+    l3.pushBack(123);
+    l3.print();
+    return 0;
 }

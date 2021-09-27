@@ -1,148 +1,110 @@
 #include<iostream>
-#include<stdexcept>
+#include<cassert>
 
 
-class QueueA{
+class QueueA3 {
 public:
-  QueueA() = default;
-  QueueA(const QueueA& q);
-  QueueA& operator=(const QueueA& rhs);
-  ~QueueA();
-  bool is_empty() const noexcept;
-  void push(float value);
-  void pop() noexcept;
-  float& top();
+    QueueA3();
+    QueueA3(const QueueA3& q);
+    QueueA3 operator=(const QueueA3& rhs);
+    ~QueueA3();
+    void push(const float value);
+    void pop() noexcept;
+    bool empty() const noexcept;
+    float& top();
+    std::ptrdiff_t i_head = -1;
+    std::ptrdiff_t i_tail = -1;
+    std::ptrdiff_t capacity = 0;
 private:
-  std::ptrdiff_t capacity_ = 0;
-  std::ptrdiff_t i_head_ = -1;
-  std::ptrdiff_t i_tail_ = -1;
-  float* data_ = nullptr;
+    float* data = nullptr;
 };
 
-QueueA::QueueA(const QueueA& q){
-  if(q.is_empty()) return;
-  capacity_ = q.capacity_;
-  data_ = new float[capacity_]{0};
-  std::ptrdiff_t c = 0;
-  for(std::ptrdiff_t i = q.i_head_ % q.capacity_; i != q.i_tail_; i = (i + 1) % q.capacity_ ,++c){
-    data_[c] = q.data_[i];
-  }
-  data_[i_tail_] = q.data_[q.i_tail_];
-
-  if(q.i_tail_ < q.i_head_){
-    i_tail_ = q.capacity_ - q.i_head_ + i_tail_;
-  } else {
-      i_tail_ = q.i_tail_ - q.i_head_;
-  }
-  i_head_ = 0;
-
-}
-
-QueueA& QueueA::operator=(const QueueA& rhs){
-  if(rhs.data_ == nullptr){
-    delete[] data_;
-    i_head_ = -1;
-    i_tail_ = -1;
-    data_ = nullptr;
-    return (*this);
-  }
-  std::ptrdiff_t new_capacity = rhs.capacity_;
-  auto new_data_ = new float[new_capacity]{0};
-  std::ptrdiff_t c = 0;
-  for(std::ptrdiff_t i = rhs.i_head_ % rhs.capacity_; i != rhs.i_tail_; i = (i + 1) % rhs.capacity_, ++c){
-    new_data_[c] = rhs.data_[i];
-  }
-  new_data_[c] = rhs.data_[rhs.i_tail_];
-  capacity_ = new_capacity;
-  delete[] data_;
-  data_ = new_data_;
-  if(rhs.i_tail_ < rhs.i_head_){
-    i_tail_ = rhs.capacity_  - rhs.i_head_ + rhs.i_tail_;
-  } else {
-      i_tail_ = rhs.i_tail_ - rhs.i_head_;
-  }
-  i_head_ = 0;
-  return (*this);
-}
-
-// Деструктор
-QueueA::~QueueA() {
-  delete[] data_;
-}
-
-void QueueA::push(const float value){
-  if(is_empty()){
-    capacity_ = 2;
-    data_ = new float[capacity_]{0};
-    i_head_ = 0;
-    i_tail_ = 0;
-    data_[i_head_] = value;
-    return;
-  }
-  std::ptrdiff_t new_i_tail_ = (i_tail_ + 1) % capacity_;
-  if(new_i_tail_ == i_head_){
-    auto new_capacity = capacity_ * 2;
-    auto new_data_ = new float[new_capacity]{0};
-    std::ptrdiff_t c = 0;
-    for(std::ptrdiff_t i = i_head_ % capacity_; i != i_tail_; i = (i + 1) % capacity_, ++c){
-      new_data_[c] = data_[i];
+QueueA3::QueueA3(const QueueA3& q) {
+    if(q.empty()) return;
+    i_tail = q.i_tail;
+    i_head = q.i_head;
+    capacity = q.capacity;
+    data = new float[capacity]{0};
+    for(int i = 0; i < capacity; ++i) {
+        data[i] = q.data[i];
     }
-    new_data_[c] = data_[i_tail_];
-    ++c;
-    new_data_[c] = value;
-    capacity_ = new_capacity;
-    delete[] data_;
-    data_ = new_data_;
-    i_head_ = 0;
-    i_tail_ = c;
-  } else {
-      i_tail_ = new_i_tail_;
-      data_[i_tail_] = value;
-  }
 }
 
-void QueueA::pop() noexcept {
-  if(!is_empty()){
-    if(i_tail_ == i_head_){
-      i_head_ = -1;
-      i_tail_ = -1;
-    } else {
-        i_head_ = (i_head_ + 1) % capacity_;
+QueueA3 QueueA3::operator=(const QueueA3& rhs) {
+    if(rhs.empty()) return *this;
+    i_head = rhs.i_head;
+    i_tail = rhs.i_tail;
+    if(data != nullptr) delete[] data;
+    capacity = rhs.capacity;
+    data = new float[capacity]{0};
+    for(int i = 0; i < capacity; ++i) {
+        data[i] = rhs.data[i];
     }
-  }
+    return *this;
 }
 
-float& QueueA::top(){
-  if(is_empty()) throw std::out_of_range("Queue is empty");
-  return data_[i_head_];
+QueueA3::~QueueA3() {
+    delete[] data;
 }
 
-bool QueueA::is_empty() const noexcept {
-  return i_head_ == -1;
+void QueueA3::push(const float value) {
+    if(data == nullptr) {
+        capacity = 2;
+        i_head = 0;
+        i_tail = 0;
+        data = new float[capacity]{0};
+    }
+    if((i_tail < i_head && i_head - i_tail == 1) || (i_head == 0 || i_tail == capacity - 1)) {
+        float* temp = new float[capacity]{0};
+        int i = 0;
+        while(!this->empty()) {
+            temp[i] = this->top();
+            this->pop();
+            i++;
+        }
+        delete[] data;
+        data = new float[capacity * 2]{0};
+        for(int i = 1, j = 0; j < capacity; ++i, ++j) {
+            data[i] = temp[j];
+        }
+        i_head = 0;
+        i_tail = capacity - 1;
+        capacity *= 2;
+    }
+}
+
+void QueueA3::pop() noexcept {
+    assert(!this->empty());
+    i_head = (i_head + 1) % capacity;
+}
+
+bool QueueA3::empty() const noexcept {
+    return i_tail == i_head;
+}
+
+float& QueueA3::top() {
+    assert(!this->empty());
+    return data[(i_tail + 1) % capacity];
+
 }
 
 
-int main(){
-  QueueA q;
-
-  std::cout << q.is_empty() << "\n";
-  
-  q.push(10);
-
-  std::cout << q.is_empty() << "\n";
-
-  q.push(11);
-
-  std::cout << q.top() << "\n";
-
-  q.push(12);
-
-  q.pop();
-  q.pop();
-  q.pop();
-
-  std::cout << q.top() << "\n";
-
-  return 0;
+int main() {
+    QueueA3 q1;
+    q1.push(1);
+    q1.push(2);
+    q1.push(3);
+    std::cout << q1.top() << "\n";
+    QueueA3 q2(q1);
+    q2.push(4);
+    q2.pop();
+    q2.pop();
+    q2.pop();
+    std::cout << q2.top() << "\n";
+    QueueA3 q3 = q1;
+    q3.push(41924);
+    q3.pop();
+    q3.pop();
+    q3.pop();
+    return 0;
 }
-
