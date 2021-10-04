@@ -85,6 +85,9 @@ int main(){
   a.push(8);
   std::cout << a.get_capacity() << "\n";
   a.print();
+
+  ArrayD b(a);
+  b.print();
+
   return 0;
 }
-

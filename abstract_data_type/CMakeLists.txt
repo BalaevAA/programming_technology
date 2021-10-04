@@ -1,14 +1,9 @@
 cmake_minimum_required(VERSION 3.0)
 
+project(abstract_data_type)
 
-add_executable(arrayD "arrayD.cpp")
-add_executable(stackA "stackA.cpp")
-add_executable(stackL "stackL.cpp")
-add_executable(list "list.cpp")
-add_executable(queueA "queueA.cpp")
-add_executable(queueL "queueL.cpp")
-add_executable(queuePA "queuePA.cpp")
-add_executable(queuePL "queuePL.cpp")
-add_executable(matrixVs "matrixVs.cpp")
-add_executable(matrixDs "matrixDs.cpp")
-add_executable(matrixLs "matrixLs.cpp")
+add_executable(segments_tree1 "Segment_tree_indus.cpp")
+add_executable(segments_tree2 "segment_tree.cpp")
+add_executable(minHeap "MinHeap.cpp")
+add_executable(queuePL_with_sort "queuePL_with sort.cpp")
+

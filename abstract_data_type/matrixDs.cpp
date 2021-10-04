@@ -4,129 +4,83 @@
 #include <algorithm>
 #include <stdexcept>
 
-class MatrixDr {
+class MatrixDs {
 public:
-    MatrixDr() : n_row_(0), n_col_(0), data_(nullptr){}
-    MatrixDr(const std::ptrdiff_t col_count, const std::ptrdiff_t row_count) noexcept(false);
-    MatrixDr(const MatrixDr& rhs) noexcept;
-    ~MatrixDr() noexcept;
-    MatrixDr& operator=(const MatrixDr& rhs) noexcept;
-    
-    bool operator==(const MatrixDr& rhs) const noexcept;
-    // MatrixDr& multiply(MatrixDr rhs) noexcept(false);
+    MatrixDs() = default;
+    MatrixDs(const std::ptrdiff_t col_count, const std::ptrdiff_t row_count) noexcept(false);
+    MatrixDs(const MatrixDs&) = default;
+    ~MatrixDs() = default;
+    MatrixDs& operator=(const MatrixDs& rhs) = default;
+
+    bool operator==(const MatrixDs& rhs) const noexcept;
+    MatrixDs& multiply(MatrixDs rhs) noexcept(false);
     size_t rowCount() const noexcept { return n_row_;  }
     size_t colCount() const noexcept { return n_col_;  }
     float& at(const std::ptrdiff_t i_row, const std::ptrdiff_t i_col) noexcept(false);
     float at(const std::ptrdiff_t i_row, const std::ptrdiff_t i_col) const noexcept(false);
-    // MatrixDr& transpose() noexcept;
-    // void swapRows(const std::ptrdiff_t i_first, const std::ptrdiff_t i_second) noexcept(false);
-    // void swapColumns(const std::ptrdiff_t i_first, const std::ptrdiff_t i_second) noexcept(false);
+    MatrixDs& transpose() noexcept;
+    void swapRows(const std::ptrdiff_t i_first, const std::ptrdiff_t i_second) noexcept(false);
+    void swapColumns(const std::ptrdiff_t i_first, const std::ptrdiff_t i_second) noexcept(false);
     std::ostream& writeTo(std::ostream& out) const noexcept;
-    
-    float* begin(std::ptrdiff_t i_row) noexcept(false);
-    float* begin(std::ptrdiff_t i_row) const noexcept(false);
-    float* end(std::ptrdiff_t i_row) noexcept(false);
-    float* end(std::ptrdiff_t i_row) const noexcept(false);
 private:
     std::ptrdiff_t n_row_{0};
     std::ptrdiff_t n_col_{0};
-    float** data_{nullptr};
+    std::vector<std::vector<float>> data_;
 };
 
 
-MatrixDr::MatrixDr(const std::ptrdiff_t col_count, const std::ptrdiff_t row_count) noexcept(false) {
+std::ostream& operator<<(std::ostream& out, const MatrixDs& matr) noexcept;
+
+
+MatrixDs::MatrixDs(const std::ptrdiff_t col_count, const std::ptrdiff_t row_count) noexcept(false){
     if (row_count < 0 || col_count < 0) throw std::out_of_range("Index of element was out of range!");
     if((col_count != row_count)&&(col_count == 0 || row_count == 0)) throw std::invalid_argument("columns or rows were equal to zero");
-    if(row_count == 0 || col_count == 0){ return; }
     n_row_ = row_count;
     n_col_ = col_count;
-    data_ = new float*[row_count];
-    for(std::ptrdiff_t i = 0; i < row_count; ++i){
-        data_[i] = new float[col_count]{0};
-    }
+    data_.resize(row_count, std::vector<float>(col_count));
 }
 
-MatrixDr::MatrixDr(const MatrixDr& rhs) noexcept
-    : n_row_(rhs.n_row_), n_col_(rhs.n_col_){
-    data_ = new float*[rhs.n_row_];
-    if(n_row_ == 0) data_ = nullptr;
-    for(std::ptrdiff_t i = 0; i < n_row_; ++i){
-        data_[i] = new float[n_col_]{0};
-        std::copy(rhs.begin(i), rhs.end(i), begin(i));
-    }
+bool MatrixDs::operator==(const MatrixDs &rhs) const noexcept {
+    return (data_ == rhs.data_ && n_col_ == rhs.n_col_ && n_row_ == rhs.n_row_);
 }
 
-float* MatrixDr::begin(std::ptrdiff_t i_row) noexcept(false) {
-    if(i_row < 0 || i_row >= n_row_) throw std::out_of_range("Index of element was out of range!");
-    return *(data_ + i_row);
-}
-
-float* MatrixDr::begin(std::ptrdiff_t i_row) const noexcept(false) {
-    if(i_row < 0 || i_row >= n_row_) throw std::out_of_range("Index of element was out of range!");
-    return *(data_ + i_row);
-}
-
-float *MatrixDr::end(std::ptrdiff_t i_row) noexcept(false) {
-    if(i_row < 0 || i_row >= n_row_) throw std::out_of_range("Index of element was out of range!");
-    return *(data_ + i_row) + n_col_;
-}
-
-float* MatrixDr::end(std::ptrdiff_t i_row) const noexcept(false) {
-    if(i_row < 0 || i_row >= n_row_) throw std::out_of_range("Index of element was out of range!");
-    return *(data_ + i_row) + n_col_;
-}
-
-MatrixDr::~MatrixDr() noexcept{
-    for(std::ptrdiff_t i = 0 ; i < n_row_; ++i){
-        delete[] data_[i];
-    }
-    delete[] data_;
-}
-
-
-MatrixDr& MatrixDr::operator=(const MatrixDr& rhs) noexcept{
-    if((*this) == rhs) return (*this);
-    for(std::ptrdiff_t i = 0 ; i < n_row_; ++i){
-        delete[] data_[i];
-    }
-    delete[] data_;
-    n_row_ = rhs.n_row_;
-    n_col_ = rhs.n_col_;
-    data_ = new float*[n_row_];
-    if(n_row_ == 0) data_ = nullptr;
-    for(std::ptrdiff_t i = 0; i < n_row_; ++i){
-        data_[i] = new float[n_col_]{0};
-        std::copy(rhs.begin(i), rhs.end(i), begin(i));
-    }
-    return (*this);
-}
-
-bool MatrixDr::operator==(const MatrixDr &rhs) const noexcept {
-    bool res = true;
-    if(n_col_ != rhs.n_col_ || n_row_ != rhs.n_row_) res = false;
-    for(std::ptrdiff_t i = 0; i < n_row_; ++i){
-        if(!res) break;
-        for(std::ptrdiff_t j = 0; j < n_col_; ++j){
-            if(data_[i][j] != rhs.data_[i][j]){
-                res = false;
-                break;
+MatrixDs& MatrixDs::multiply(MatrixDs rhs) noexcept(false) {
+    if(n_col_ != rhs.n_row_) throw std::invalid_argument("Cannot multiply matrices with these parameters");
+    MatrixDs res(rhs.colCount(), this->rowCount());
+    for (std::ptrdiff_t i = 0; i < this->rowCount(); ++i){
+        for (std::ptrdiff_t j = 0; j < rhs.colCount(); ++j){
+            res.at(i, j) = 0;
+            for (std::ptrdiff_t k = 0; k < rhs.rowCount(); ++k){
+                res.at(i, j) += this->at(i, k) * rhs.at(k, j);
             }
         }
     }
-    return res;
+    (*this) = res;
+    return (*this);
 }
 
-float& MatrixDr::at(const std::ptrdiff_t i_row, const std::ptrdiff_t i_col) noexcept(false) {
+float& MatrixDs::at(const std::ptrdiff_t i_row, const std::ptrdiff_t i_col) noexcept(false) {
     if (i_row >= n_row_ || i_col >= n_col_ || i_row < 0 || i_col < 0) throw std::out_of_range("Index of element was out of range!");
     return data_[i_row][i_col];
 }
 
-float MatrixDr::at(const std::ptrdiff_t i_row, const std::ptrdiff_t i_col) const noexcept(false) {
+float MatrixDs::at(const std::ptrdiff_t i_row, const std::ptrdiff_t i_col) const noexcept(false) {
     if (i_row >= n_row_ || i_col >= n_col_ || i_row < 0 || i_col < 0) throw std::out_of_range("Index of element was out of range!");
     return data_[i_row][i_col];
 }
 
-std::ostream& MatrixDr::writeTo(std::ostream &out) const noexcept {
+MatrixDs &MatrixDs::transpose() noexcept {
+    MatrixDs res(n_row_, n_col_);
+    for(std::ptrdiff_t i = 0; i < n_row_; ++i){
+        for(std::ptrdiff_t j = 0; j < n_col_; ++j){
+            res.at(j, i) = this->at(i, j);
+        }
+    }
+    (*this) = res;
+    return (*this);
+}
+
+std::ostream &MatrixDs::writeTo(std::ostream &out) const noexcept {
     for(std::ptrdiff_t i = 0; i < n_row_; ++i){
         for(std::ptrdiff_t j = 0; j < n_col_; ++j){
             out << data_[i][j];
@@ -137,62 +91,29 @@ std::ostream& MatrixDr::writeTo(std::ostream &out) const noexcept {
     return out;
 }
 
-std::ostream& operator<<(std::ostream& out, const MatrixDr& matr) noexcept{
-    return matr.writeTo(out);
+void MatrixDs::swapRows(const std::ptrdiff_t i_first, const std::ptrdiff_t i_second) noexcept(false) {
+    if(i_first >= n_row_ || i_second >= n_row_ || i_first < 0 || i_second < 0) throw std::out_of_range("Index of element was out of range!");
+    if(i_first == i_second) return;
+    auto it1 = (data_.begin() + i_first);
+    auto it2 = (data_.begin() + i_second);
+    std::swap(*it1, *it2);
 }
 
-
-
-
-// MatrixDr& MatrixDr::multiply(MatrixDr rhs) noexcept(false) {
-//     if(n_col_ != rhs.n_row_) throw std::invalid_argument("Cannot multiply matrices with these parameters");
-//     MatrixDr res(rhs.colCount(), this->rowCount());
-//     for (std::ptrdiff_t i = 0; i < this->rowCount(); ++i){
-//         for (std::ptrdiff_t j = 0; j < rhs.colCount(); ++j){
-//             res.at(i, j) = 0;
-//             for (std::ptrdiff_t k = 0; k < rhs.rowCount(); ++k){
-//                 res.at(i, j) += this->at(i, k) * rhs.at(k, j);
-//             }
-//         }
-//     }
-//     (*this) = res;
-//     return (*this);
-// }
-
-// MatrixDr& MatrixDr::transpose() noexcept {
-//     MatrixDr res(n_row_, n_col_);
-//     for(std::ptrdiff_t i = 0; i < n_row_; ++i){
-//         for(std::ptrdiff_t j = 0; j < n_col_; ++j){
-//             res.at(j, i) = this->at(i, j);
-//         }
-//     }
-//     (*this) = res;
-//     return (*this);
-// }
-
-// void MatrixDr::swapRows(const std::ptrdiff_t i_first, const std::ptrdiff_t i_second) noexcept(false) {
-//     if(i_first >= n_row_ || i_second >= n_row_ || i_first < 0 || i_second < 0) throw std::out_of_range("Index of element was out of range!");
-//     if(i_first == i_second) return;
-//     auto it1 = (this->begin(i_first));
-//     auto it2 = (this->begin(i_second));
-//     std::swap_ranges(it1, it1 + n_col_, it2);
-// }
-
-// void MatrixDr::swapColumns(const std::ptrdiff_t i_first, const std::ptrdiff_t i_second) noexcept(false) {
-//     if(i_first >= n_col_ || i_second >= n_col_ || i_first < 0 || i_second < 0) throw std::out_of_range("Index of element was out of range!");
-//     if(i_first == i_second) return;
-//     std::vector<float> temp(n_row_);
-//     for(std::ptrdiff_t i = 0 ; i < n_row_; ++i){
-//         std::swap(data_[i][i_first], data_[i][i_second]);
-//     }
-// }
-
-
-int main(){
-    MatrixDr matr(2,5);
-    for(int i = 0; i < 5; ++i){
-        
+void MatrixDs::swapColumns(const std::ptrdiff_t i_first, const std::ptrdiff_t i_second) noexcept(false) {
+    if(i_first >= n_col_ || i_second >= n_col_ || i_first < 0 || i_second < 0) throw std::out_of_range("Index of element was out of range!");
+    if(i_first == i_second) return;
+    std::vector<float> temp(n_row_);
+    for(auto& row : data_){
+        std::swap(row[i_first], row[i_second]);
     }
-    
+}
+
+std::ostream& operator<<(std::ostream& out, const MatrixDs& matr) noexcept{
+    matr.writeTo(out);
+    return out;
+}
+
+int main() {
+
     return 0;
 }
